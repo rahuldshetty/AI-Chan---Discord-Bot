@@ -2,7 +2,6 @@
 import os
 
 import discord
-from dotenv import load_dotenv
 from message_handlers.memes import send_random_meme
 from message_handlers.utility import check_valid_url
 
