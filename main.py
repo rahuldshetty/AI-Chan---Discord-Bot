@@ -5,7 +5,6 @@ import discord
 from message_handlers.memes import send_random_meme
 from message_handlers.utility import check_valid_url
 
-load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 
 client = discord.Client()
