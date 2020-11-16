@@ -1,5 +1,6 @@
 import requests
 import logging
+import json
 
 RASA_AI_ENDPOINT = "https://rasa-ai-chan.herokuapp.com/webhooks/rest/webhook"
 
@@ -11,6 +12,9 @@ def get_chat_message(message="Hi"):
     headers = {
         'Content-Type': 'application/json'
     }
+
+    payload = json.dumps(payload)
+
     try:
         response = requests.post(RASA_AI_ENDPOINT, data=payload, headers=headers)
         results = response.json()
