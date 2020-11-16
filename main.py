@@ -26,10 +26,10 @@ async def on_message(message):
 
     # this bot should only respond to messages with ayaya
     if  "ayaya" in msg:
-        if "meme" in msg:
-            entities = msg.split()
+        entities = msg.split()
+        if "meme" in entities:
             msg = ""
-            if entities >= 3:
+            if len(entities) >= 3:
                 msg = entities[2]
             url = send_random_meme(msg)
             if check_valid_url(url):
@@ -37,10 +37,11 @@ async def on_message(message):
             else:
                 await message.channel.send("No AYAYA Found :(")
         else:
-            msg_list = msg.split()
-            msg_list.remove("ayaya")
-            response = get_chat_message(" ".join(msg_list))
-            await message.channel.send(response)
-
+            if len(entities) >= 2:
+                entities.remove("ayaya")
+                response = get_chat_message(" ".join(entities))
+                await message.channel.send(response)
+            else:
+                await message.channel.send("No AYAYA Found :(")
 
 client.run(TOKEN)
